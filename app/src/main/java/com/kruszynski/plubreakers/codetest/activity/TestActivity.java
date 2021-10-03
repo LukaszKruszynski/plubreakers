@@ -16,23 +16,26 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kruszynski.plubreakers.decoder.ImageDecoder;
 import com.kruszynski.plubreakers.MainActivity;
 import com.kruszynski.plubreakers.R;
-import com.kruszynski.plubreakers.codetest.reply.TestReply;
 import com.kruszynski.plubreakers.codetest.adapter.TestReplyAdapter;
-import com.kruszynski.plubreakers.codetest.service.TestService;
 import com.kruszynski.plubreakers.codetest.model.ProductTest;
+import com.kruszynski.plubreakers.codetest.model.ProductType;
+import com.kruszynski.plubreakers.codetest.reply.TestReply;
+import com.kruszynski.plubreakers.codetest.service.TestService;
+import com.kruszynski.plubreakers.decoder.ImageDecoder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class TestActivity extends AppCompatActivity {
 
     private TestService service = new TestService();
     private int timerCounter;
     private int productCounter;
-    private int codesCount;
     private List<ProductTest> allTestProducts;
     private List<TestReply> testReplies = new ArrayList<>();
     private Button button0;
@@ -59,12 +62,10 @@ public class TestActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        codesCount = getCodesCountExtra(getString(R.string.codes_count_extra));
         initViewConfig();
-        int size = setProductsConfig(codesCount).size();
+        int size = setProductsConfig(getCodesCountExtra(), getCheckedTypesExtra()).size();
         setTimer(size * 3);
     }
-
 
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
@@ -72,8 +73,27 @@ public class TestActivity extends AppCompatActivity {
         return true;
     }
 
-    private int getCodesCountExtra(String extraName) {
+    private int getCodesCountExtra() {
         return getIntent().getIntExtra(getString(R.string.codes_count_extra), 20);
+    }
+
+    private HashMap<String, Boolean> getProductsTypesExtra() {
+        HashMap<String, Boolean> typeExtrasMap = new HashMap<>();
+        typeExtrasMap.put(getString(R.string.bread_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.bread_extra_is_checked), false));
+        typeExtrasMap.put(getString(R.string.rolls_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.rolls_extra_is_checked), false));
+        typeExtrasMap.put(getString(R.string.snacks_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.snacks_extra_is_checked), false));
+        typeExtrasMap.put(getString(R.string.fruits_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.fruits_extra_sw_is_checked), false));
+        typeExtrasMap.put(getString(R.string.vegetables_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.candies_extra_sw_is_checked), false));
+        return typeExtrasMap;
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private Set<ProductType> getCheckedTypesExtra() {
+        return getProductsTypesExtra().entrySet()
+                .stream()
+                .filter(r -> r.getValue() == true)
+                .map(r -> r.getKey())
+                .map(r -> ProductType.valueOf(r))
+                .collect(Collectors.toSet());
     }
 
     private void initViews() {
@@ -105,15 +125,18 @@ public class TestActivity extends AppCompatActivity {
         service.initDoubleTextButtonConfig(button00, codeView);
         initButtonPLUConfig();
     }
-    private List<ProductTest> setProductsConfig(int recordsCount) {
-        List<ProductTest> productTests = initTestProducts(recordsCount);
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private List<ProductTest> setProductsConfig(int recordsCount, Set<ProductType> productTypes) {
+        List<ProductTest> productTests = initTestProducts(recordsCount, productTypes);
         fetchFirstTestRecord();
         return productTests;
     }
 
 
-    private List<ProductTest> initTestProducts(int count) {
-        allTestProducts = service.getRandomProducts(getApplicationContext(), count);
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private List<ProductTest> initTestProducts(int count,Set<ProductType> productTypes) {
+        allTestProducts = service.getRandomProducts(getApplicationContext(), count, productTypes);
         return allTestProducts;
     }
 
@@ -146,7 +169,7 @@ public class TestActivity extends AppCompatActivity {
         productCounter = 1;
         buttonPLU.setOnClickListener(l -> {
             if (codeView.getText().length() == 0) {
-                Toast.makeText(getApplicationContext(), "Kod PLU jest pusty!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getText(R.string.empty_code_plu_toast), Toast.LENGTH_SHORT).show();
             } else if (productCounter < allTestProducts.size()) {
                 addReply();
                 setNextProductView(productCounter);

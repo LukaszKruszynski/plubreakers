@@ -43,10 +43,13 @@ public class TestConfigActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_config);
         initViewComponents();
         initStartButtonLogic();
-        initBakeryBehaviorSwitches();
         fillParentSwitchesList();
         fillChildrenSwitchesList();
-        setCheckedSwitches(true,parentSwitches,childrenSwitches);
+        setCheckedSwitches(true, parentSwitches, childrenSwitches);
+//        initBakeryBehaviorSwitches();
+        initFamilySwitching(bakedSw, breadsSw, rollsSw, snacksSw);
+        initChildrenSwitchesBehavior(bakedSw, breadsSw, rollsSw, snacksSw);
+        initParentSwitchesBehavior(breadsSw, rollsSw, snacksSw);
     }
 
     private void initViewComponents() {
@@ -127,12 +130,30 @@ public class TestConfigActivity extends AppCompatActivity {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (getChildrenBakeryCheckedSwitches().size() > 1) {
-                        childrenSwitches.forEach(v -> v.setClickable(true));
+                        childrenSwitches.forEach(s -> s.setClickable(true));
                     }
                     if (!isChecked && getChildrenBakeryUncheckSwitches().size() == 2) {
                         getChildrenBakeryCheckedSwitches().stream().findAny().get().setClickable(false);
-                    } else if (getChildrenBakeryCheckedSwitches().isEmpty()) {
+                    }
+                    if (getChildrenBakeryCheckedSwitches().isEmpty() && getParentsCheckSwitches().size() > 1) {
                         parentSwitch.setChecked(false);
+                    }
+                }
+            });
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void initParentSwitchesBehavior(Switch... parents) {
+        Arrays.stream(parents).forEach(s -> {
+            s.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (getParentsCheckSwitches().size() > 1) {
+                        parentSwitches.forEach(s -> s.setClickable(true));
+                    }
+                    if (!isChecked && getParentsCheckSwitches().size() == 1) {
+                        getParentsCheckSwitches().stream().findAny().get().setClickable(false);
                     }
                 }
             });
@@ -143,6 +164,7 @@ public class TestConfigActivity extends AppCompatActivity {
     private void initBakeryBehaviorSwitches() {
         initFamilySwitching(bakedSw, breadsSw, rollsSw, snacksSw);
         initChildrenSwitchesBehavior(bakedSw, breadsSw, rollsSw, snacksSw);
+        initParentSwitchesBehavior(bakedSw, fruitsSw, vegetablesSw, candiesSw);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -161,12 +183,9 @@ public class TestConfigActivity extends AppCompatActivity {
                 int count = Integer.parseInt(countProductsTestET.getText().toString());
                 if (count > 0 && count <= 50) {
                     intent.putExtra(getString(R.string.codes_count_extra), count);
-                    intent.putExtra(getString(R.string.baked_extra_is_checked), bakedSw.isChecked());
-                    if (bakedSw.isChecked()) {
-                        intent.putExtra(getString(R.string.bread_extra_is_checked), breadsSw.isChecked());
-                        intent.putExtra(getString(R.string.rolls_extra_is_checked), rollsSw.isChecked());
-                        intent.putExtra(getString(R.string.snacks_extra_is_checked), snacksSw.isChecked());
-                    }
+                    intent.putExtra(getString(R.string.bread_extra_is_checked), breadsSw.isChecked());
+                    intent.putExtra(getString(R.string.rolls_extra_is_checked), rollsSw.isChecked());
+                    intent.putExtra(getString(R.string.snacks_extra_is_checked), snacksSw.isChecked());
                     intent.putExtra(getString(R.string.fruits_extra_sw_is_checked), fruitsSw.isChecked());
                     intent.putExtra(getString(R.string.vegetables_extra_sw_is_checked), vegetablesSw.isChecked());
                     intent.putExtra(getString(R.string.candies_extra_sw_is_checked), candiesSw.isChecked());

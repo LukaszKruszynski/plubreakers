@@ -7,28 +7,36 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
-import com.kruszynski.plubreakers.decoder.ImageDecoder;
+import com.kruszynski.plubreakers.codetest.model.ProductTest;
+import com.kruszynski.plubreakers.codetest.model.ProductType;
 import com.kruszynski.plubreakers.codetest.reply.TestReply;
 import com.kruszynski.plubreakers.db.AppDatabase;
-import com.kruszynski.plubreakers.codetest.model.ProductTest;
+import com.kruszynski.plubreakers.decoder.ImageDecoder;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class TestService {
     private List<ProductTest> productTests;
 
-    private void fetchProducts(Context context) {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void fetchProducts(Context context,Set<ProductType> productTypes) {
         if (productTests == null) {
-            productTests = AppDatabase.instance(context).productTestDao().getAll();
-         }
+            productTests = new ArrayList<>();
+           productTypes.forEach(productType -> {
+                productTests.addAll(AppDatabase.instance(context).productTestDao().getProductsByType(productType));
+            });
+        }
     }
 
-    public List<ProductTest> getRandomProducts(Context context,int quantity) {
-        fetchProducts(context);
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public List<ProductTest> getRandomProducts(Context context, int quantity, Set<ProductType> productTypes) {
+
+        fetchProducts(context, productTypes);
         Random random = new Random();
         List<ProductTest> randomProductTests = new ArrayList<>();
         if (quantity >= productTests.size()) {
@@ -41,6 +49,7 @@ public class TestService {
                 randomProductTests.add(productTests.get(randomNumber));
             }
         }
+        Collections.shuffle(randomProductTests);
         return randomProductTests;
     }
 

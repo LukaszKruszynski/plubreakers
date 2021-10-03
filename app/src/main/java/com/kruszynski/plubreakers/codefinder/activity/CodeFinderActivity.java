@@ -13,4 +13,5 @@ public class CodeFinderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_finder);
     }
+
 }

@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">PLU Breakers</string>
     <string name="baked_extra_is_checked">BAKED_EXTRA</string>
-    <string name="bread_extra_is_checked">BREAD_EXTRA</string>
-    <string name="rolls_extra_is_checked">ROLLS_EXTRA</string>
-    <string name="snacks_extra_is_checked">SNACKS_EXTRA</string>
-    <string name="fruits_extra_sw_is_checked">FRUITS_EXTRA</string>
-    <string name="vegetables_extra_sw_is_checked">VEGETABLES_EXTRA</string>
-    <string name="candies_extra_sw_is_checked">CANDIES_EXTRA</string>
+    <string name="bread_extra_is_checked">BAKING_BREAD</string>
+    <string name="rolls_extra_is_checked">BAKING_ROLL</string>
+    <string name="snacks_extra_is_checked">BAKING_SNACKS</string>
+    <string name="fruits_extra_sw_is_checked">FRUIT</string>
+    <string name="vegetables_extra_sw_is_checked">VEGETABLE</string>
+    <string name="candies_extra_sw_is_checked">CANDIES</string>
     <string name="codes_count_extra">CODES_COUNT_EXTRA</string>
     <string name="baked">Pieczywo</string>
     <string name="bread">Chleb</string>
@@ -14,6 +14,7 @@
     <string name="snacks">Przekąski</string>
     <string name="candies">Cukierki</string>
     <string name="fruits">Owoce</string>
+    <string name="empty_code_plu_toast">Kod PLU jest pusty!</string>
     <string name="vegetables">Warzywa</string>
     <string name="not_entered_code"> PLU </string>
     <string name="not_entered_code_description">Brak kodu</string>
