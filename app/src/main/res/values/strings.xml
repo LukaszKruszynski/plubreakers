@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">PLU Breakers</string>
+    <string name="baked_extra_is_checked">BAKED_EXTRA</string>
+    <string name="bread_extra_is_checked">BREAD_EXTRA</string>
+    <string name="rolls_extra_is_checked">ROLLS_EXTRA</string>
+    <string name="snacks_extra_is_checked">SNACKS_EXTRA</string>
+    <string name="fruits_extra_sw_is_checked">FRUITS_EXTRA</string>
+    <string name="vegetables_extra_sw_is_checked">VEGETABLES_EXTRA</string>
+    <string name="candies_extra_sw_is_checked">CANDIES_EXTRA</string>
+    <string name="codes_count_extra">CODES_COUNT_EXTRA</string>
+    <string name="baked">Pieczywo</string>
+    <string name="bread">Chleb</string>
+    <string name="rolls">Bułki</string>
+    <string name="snacks">Przekąski</string>
+    <string name="candies">Cukierki</string>
+    <string name="fruits">Owoce</string>
+    <string name="vegetables">Warzywa</string>
+    <string name="not_entered_code"> PLU </string>
+    <string name="not_entered_code_description">Brak kodu</string>
+    <string name="entered_code_description">Wpisany</string>
+    <string name="empty_count_codes_test_toast">Wpisz liczbę kodów!</string>
+    <string name="incorrect_count_codes_test_toast">Niepoprawna liczba kodów!(1-50)</string>
+    <string name="good_luck_info_test_config">Na każdą odpowiedz masz 3 sekundy. Powodzenia!</string>
+    <string name="choose_area_info_test_config">Wybierz obszar kodów.</string>
+
+</resources>

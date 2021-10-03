@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/item_reply_final_text_correct_code"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:gravity="left"
+        android:text="Poprawny "
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/item_reply_iamge_product"
+        app:layout_constraintTop_toBottomOf="@+id/item_reply_final_text_inserted_code" />
+
+    <ImageView
+        android:id="@+id/item_reply_iamge_product"
+        android:layout_width="159dp"
+        android:layout_height="126dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/item_reply_display_product_name"
+        android:layout_width="313dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="26dp"
+        android:gravity="center"
+        android:text="Product"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_reply_iamge_product" />
+
+    <TextView
+        android:id="@+id/item_reply_display_inserted_code"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="center"
+        android:text="Inserted"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_reply_display_correct_code"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="center"
+        android:text="Correct"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_reply_display_inserted_code" />
+
+    <TextView
+        android:id="@+id/item_reply_final_text_inserted_code"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:gravity="left"
+        android:text="Wpisany "
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/item_reply_iamge_product"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_reply_display_is_correct"
+        android:layout_width="61dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="5dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="V"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_reply_display_product_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>
