@@ -29,7 +29,10 @@ public class TestConfigActivity extends AppCompatActivity {
     private Switch candiesSw;
     private Switch breadsSw;
     private Switch rollsSw;
-    private Switch snacksSw;
+    private Switch snacksSweetSw;
+    private Switch snacksSaltySw;
+    private Switch baguetteSw;
+    private Switch donutsSw;
     private List<Switch> parentSwitches;
     private List<Switch> childrenSwitches;
 
@@ -46,10 +49,7 @@ public class TestConfigActivity extends AppCompatActivity {
         fillParentSwitchesList();
         fillChildrenSwitchesList();
         setCheckedSwitches(true, parentSwitches, childrenSwitches);
-//        initBakeryBehaviorSwitches();
-        initFamilySwitching(bakedSw, breadsSw, rollsSw, snacksSw);
-        initChildrenSwitchesBehavior(bakedSw, breadsSw, rollsSw, snacksSw);
-        initParentSwitchesBehavior(breadsSw, rollsSw, snacksSw);
+        initBehaviorSwitches();
     }
 
     private void initViewComponents() {
@@ -60,7 +60,10 @@ public class TestConfigActivity extends AppCompatActivity {
         candiesSw = findViewById(R.id.candies_sw);
         breadsSw = findViewById(R.id.breads_sw);
         rollsSw = findViewById(R.id.rolls_sw);
-        snacksSw = findViewById(R.id.snacks_sw);
+        snacksSweetSw = findViewById(R.id.snacks_sweet_sw);
+        snacksSaltySw = findViewById(R.id.snacks_salty_sw);
+        baguetteSw = findViewById(R.id.baguette_sw);
+        donutsSw = findViewById(R.id.donats_sw);
         vegetablesSw = findViewById(R.id.vegetables_sw);
     }
 
@@ -76,7 +79,10 @@ public class TestConfigActivity extends AppCompatActivity {
         childrenSwitches = new ArrayList<>();
         childrenSwitches.add(breadsSw);
         childrenSwitches.add(rollsSw);
-        childrenSwitches.add(snacksSw);
+        childrenSwitches.add(snacksSweetSw);
+        childrenSwitches.add(snacksSaltySw);
+        childrenSwitches.add(donutsSw);
+        childrenSwitches.add(baguetteSw);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -107,13 +113,14 @@ public class TestConfigActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     Arrays.stream(childrenSwitches).forEach(s -> {
+                        parentSwitch.setChecked(true);
                         s.setAlpha(1f);
                         s.setChecked(true);
                         s.setClickable(true);
                     });
                 } else {
                     Arrays.stream(childrenSwitches).forEach(s -> {
-                        s.setAlpha(0.5f);
+                        s.setAlpha(0.4f);
                         s.setChecked(false);
                         s.setClickable(false);
                     });
@@ -130,9 +137,9 @@ public class TestConfigActivity extends AppCompatActivity {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (getChildrenBakeryCheckedSwitches().size() > 1) {
-                        childrenSwitches.forEach(s -> s.setClickable(true));
+                        Arrays.stream(children).forEach(s -> s.setClickable(true));
                     }
-                    if (!isChecked && getChildrenBakeryUncheckSwitches().size() == 2) {
+                    if (!isChecked && getChildrenBakeryUncheckSwitches().size() == 2 && getParentsCheckSwitches().size() < 2) {
                         getChildrenBakeryCheckedSwitches().stream().findAny().get().setClickable(false);
                     }
                     if (getChildrenBakeryCheckedSwitches().isEmpty() && getParentsCheckSwitches().size() > 1) {
@@ -149,11 +156,15 @@ public class TestConfigActivity extends AppCompatActivity {
             s.setOnCheckedChangeListener(new OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (getParentsCheckSwitches().size() > 1) {
+                    if (isChecked && getParentsCheckSwitches().size() > 1) {
                         parentSwitches.forEach(s -> s.setClickable(true));
+                        childrenSwitches.forEach(s -> s.setClickable(true));
                     }
                     if (!isChecked && getParentsCheckSwitches().size() == 1) {
                         getParentsCheckSwitches().stream().findAny().get().setClickable(false);
+                    }
+                    if (!isChecked && getParentsCheckSwitches().size() == 1) {
+                        getChildrenBakeryCheckedSwitches().stream().findAny().ifPresent(s -> s.setClickable(false));
                     }
                 }
             });
@@ -161,10 +172,10 @@ public class TestConfigActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private void initBakeryBehaviorSwitches() {
-        initFamilySwitching(bakedSw, breadsSw, rollsSw, snacksSw);
-        initChildrenSwitchesBehavior(bakedSw, breadsSw, rollsSw, snacksSw);
-        initParentSwitchesBehavior(bakedSw, fruitsSw, vegetablesSw, candiesSw);
+    private void initBehaviorSwitches() {
+        initFamilySwitching(bakedSw, breadsSw, rollsSw, snacksSweetSw, snacksSaltySw, baguetteSw, donutsSw);
+        initChildrenSwitchesBehavior(bakedSw, breadsSw, rollsSw, snacksSweetSw, snacksSaltySw, baguetteSw, donutsSw);
+        initParentSwitchesBehavior(fruitsSw, vegetablesSw, candiesSw);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -185,7 +196,10 @@ public class TestConfigActivity extends AppCompatActivity {
                     intent.putExtra(getString(R.string.codes_count_extra), count);
                     intent.putExtra(getString(R.string.bread_extra_is_checked), breadsSw.isChecked());
                     intent.putExtra(getString(R.string.rolls_extra_is_checked), rollsSw.isChecked());
-                    intent.putExtra(getString(R.string.snacks_extra_is_checked), snacksSw.isChecked());
+                    intent.putExtra(getString(R.string.baguette_extra_is_checked), baguetteSw.isChecked());
+                    intent.putExtra(getString(R.string.snacks_sweet_extra_is_checked), snacksSweetSw.isChecked());
+                    intent.putExtra(getString(R.string.snacks_salty_extra_is_checked), snacksSaltySw.isChecked());
+                    intent.putExtra(getString(R.string.donuts_extra_is_checked), donutsSw.isChecked());
                     intent.putExtra(getString(R.string.fruits_extra_sw_is_checked), fruitsSw.isChecked());
                     intent.putExtra(getString(R.string.vegetables_extra_sw_is_checked), vegetablesSw.isChecked());
                     intent.putExtra(getString(R.string.candies_extra_sw_is_checked), candiesSw.isChecked());

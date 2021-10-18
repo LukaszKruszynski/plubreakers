@@ -11,10 +11,12 @@
         android:theme="@style/Theme.PLUBreakers">
         <activity
             android:name=".codefinder.activity.CodeFinderActivity"
-            android:exported="true" />
+            android:screenOrientation="portrait"
+        android:exported="true" />
         <activity
             android:name=".codetest.activity.TestConfigActivity"
-            android:exported="true" />
+            android:screenOrientation="portrait"
+        android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">

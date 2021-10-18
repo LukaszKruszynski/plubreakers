@@ -1,6 +1,7 @@
 package com.kruszynski.plubreakers;
 
 import android.content.Intent;
+import android.database.CursorWindow;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -10,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.kruszynski.plubreakers.codefinder.activity.CodeFinderActivity;
 import com.kruszynski.plubreakers.codetest.activity.TestConfigActivity;
 
+import java.lang.reflect.Field;
+
 public class MainActivity extends AppCompatActivity {
     private ImageButton testPluBt;
     private Button codesBt;
@@ -17,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setBiggerSizeBlob();
         setContentView(R.layout.main_activity);
         initViews();
         initViewsClickListener();
@@ -34,5 +38,14 @@ public class MainActivity extends AppCompatActivity {
         codesBt.setOnClickListener(l -> {
             startActivity(new Intent(getApplicationContext(), CodeFinderActivity.class));
         });
+    }
+    private void setBiggerSizeBlob() {
+        try {
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100 * 1024 * 1024); //the 100MB is the new size
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

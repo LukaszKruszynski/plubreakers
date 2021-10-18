@@ -64,7 +64,7 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
         initViewConfig();
         int size = setProductsConfig(getCodesCountExtra(), getCheckedTypesExtra()).size();
-        setTimer(size * 3);
+        setTimer(size * 2);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -81,9 +81,13 @@ public class TestActivity extends AppCompatActivity {
         HashMap<String, Boolean> typeExtrasMap = new HashMap<>();
         typeExtrasMap.put(getString(R.string.bread_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.bread_extra_is_checked), false));
         typeExtrasMap.put(getString(R.string.rolls_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.rolls_extra_is_checked), false));
-        typeExtrasMap.put(getString(R.string.snacks_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.snacks_extra_is_checked), false));
+        typeExtrasMap.put(getString(R.string.baguette_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.baguette_extra_is_checked), false));
+        typeExtrasMap.put(getString(R.string.snacks_sweet_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.snacks_sweet_extra_is_checked), false));
+        typeExtrasMap.put(getString(R.string.snacks_salty_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.snacks_salty_extra_is_checked), false));
+        typeExtrasMap.put(getString(R.string.donuts_extra_is_checked), getIntent().getBooleanExtra(getString(R.string.donuts_extra_is_checked), false));
         typeExtrasMap.put(getString(R.string.fruits_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.fruits_extra_sw_is_checked), false));
-        typeExtrasMap.put(getString(R.string.vegetables_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.candies_extra_sw_is_checked), false));
+        typeExtrasMap.put(getString(R.string.vegetables_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.vegetables_extra_sw_is_checked), false));
+        typeExtrasMap.put(getString(R.string.candies_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.candies_extra_sw_is_checked), false));
         return typeExtrasMap;
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
