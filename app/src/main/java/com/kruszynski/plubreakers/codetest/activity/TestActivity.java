@@ -1,6 +1,7 @@
 package com.kruszynski.plubreakers.codetest.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -55,6 +56,7 @@ public class TestActivity extends AppCompatActivity {
     private TextView nameView;
     private TextView timer;
     private ImageView imageView;
+    private TextView countRecordView;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -64,7 +66,7 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
         initViewConfig();
         int size = setProductsConfig(getCodesCountExtra(), getCheckedTypesExtra()).size();
-        setTimer(size * 2);
+        setTimer(size * 3);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -90,6 +92,7 @@ public class TestActivity extends AppCompatActivity {
         typeExtrasMap.put(getString(R.string.candies_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.candies_extra_sw_is_checked), false));
         return typeExtrasMap;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     private Set<ProductType> getCheckedTypesExtra() {
         return getProductsTypesExtra().entrySet()
@@ -118,6 +121,7 @@ public class TestActivity extends AppCompatActivity {
         nameView = findViewById(R.id.product_name);
         timer = findViewById(R.id.timer);
         imageView = findViewById(R.id.product_image);
+        countRecordView = findViewById(R.id.count_record_view);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -139,7 +143,7 @@ public class TestActivity extends AppCompatActivity {
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private List<ProductTest> initTestProducts(int count,Set<ProductType> productTypes) {
+    private List<ProductTest> initTestProducts(int count, Set<ProductType> productTypes) {
         allTestProducts = service.getRandomProducts(getApplicationContext(), count, productTypes);
         return allTestProducts;
     }
@@ -159,13 +163,26 @@ public class TestActivity extends AppCompatActivity {
     public void fetchFirstTestRecord() {
         initProductImage();
         initProductName();
+        initRecordsCounter();
+    }
+
+    private void initRecordsCounter() {
+        countRecordView.setText(new StringBuilder().append("1/").append(allTestProducts.size()));
     }
 
 
     private void showTestResultInfo() {
         TextView resultView = findViewById(R.id.result_test_info);
-        resultView.setText("Twój wynik to " + service.calculatePercentOfCorrectReplies(testReplies) + " %.\n" +
-                "Poprawne odpowiedzi " + service.howMuchCorrectReplies(testReplies) + " na " + testReplies.size() + ".");
+        resultView.setText(new StringBuilder()
+                .append("Twój wynik to ")
+                .append(service.calculatePercentOfCorrectReplies(testReplies))
+                .append(" %.\n")
+                .append("Poprawne odpowiedzi ")
+                .append(service.howMuchCorrectReplies(testReplies))
+                .append(" na ")
+                .append(testReplies.size())
+                .append(".")
+        );
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -191,6 +208,7 @@ public class TestActivity extends AppCompatActivity {
         imageView.setImageDrawable(ImageDecoder.bytes2Drawable(productTest.getImage()));
         nameView.setText(productTest.getName());
         codeView.setText("");
+        countRecordView.setText(new StringBuilder().append(index + 1).append("/").append(allTestProducts.size()));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -203,8 +221,10 @@ public class TestActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void displayReplies(List<TestReply> replies) {
-        TestReplyAdapter adapter = new TestReplyAdapter(replies);
+        List<TestReply> sortedReplies = sortRepliesByIncorrect(replies);
+        TestReplyAdapter adapter = new TestReplyAdapter(sortedReplies);
         RecyclerView recyclerView = findViewById(R.id.recycler_view_result_test);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL, false);
         DividerItemDecoration decorator = new DividerItemDecoration(recyclerView.getContext(), linearLayoutManager.getOrientation());
@@ -215,9 +235,20 @@ public class TestActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
+    private List<TestReply> sortRepliesByIncorrect(List<TestReply> replies) {
+        List<TestReply> sortedReplies = new ArrayList<>();
+        List<TestReply> incorrectReplies = replies.stream().filter(l -> !l.isCorrect()).collect(Collectors.toList());
+        List<TestReply> correctReplies = replies.stream().filter(l -> l.isCorrect()).collect(Collectors.toList());
+        sortedReplies.addAll(incorrectReplies);
+        sortedReplies.addAll(correctReplies);
+        return sortedReplies;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private ProductTest getProductByName(String name) {
         return allTestProducts.stream().filter(productTest -> productTest.getName().equals(name)).findAny().get();
     }
+
 
     private void setTimer(int seconds) {
         timerCounter = seconds;
@@ -225,7 +256,11 @@ public class TestActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onTick(long millisUntilFinished) {
-                if (timerCounter >= 60 && timerCounter < 70) {
+                if (timerCounter >= 120 && timerCounter < 130) {
+                    timer.setText("2:0" + (timerCounter - 120));
+                } else if (timerCounter > 120) {
+                    timer.setText("2:" + (timerCounter - 120));
+                } else if (timerCounter >= 60 && timerCounter < 70) {
                     timer.setText("1:0" + (timerCounter - 60));
                 } else if (timerCounter > 60) {
                     timer.setText("1:" + (timerCounter - 60));
@@ -233,6 +268,7 @@ public class TestActivity extends AppCompatActivity {
                     timer.setText("0:" + timerCounter);
                 } else {
                     timer.setText("0:0" + timerCounter);
+                    timer.setTextColor(Color.RED);
                 }
                 timerCounter--;
                 if (timerCounter == -2) {

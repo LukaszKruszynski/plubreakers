@@ -10,26 +10,26 @@
         android:id="@+id/count_codes_test_et"
         android:layout_width="302dp"
         android:layout_height="65dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Podaj liczbę kodów (1-50)"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/start_test_bt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fruits_sw" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/good_luck_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center"
         android:text="@string/good_luck_info_test_config"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,12 +37,13 @@
         android:id="@+id/choose_area_test_config_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center"
         android:text="@string/choose_area_info_test_config"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/good_luck_tv" />
 
@@ -50,143 +51,154 @@
         android:id="@+id/start_test_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="32dp"
         android:text="START"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Switch
         android:id="@+id/baked_sw"
-        android:layout_width="160dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center|start"
         android:minHeight="48dp"
         android:switchTextAppearance="@style/TextAppearance.AppCompat.Large"
         android:text="@string/baked"
-        android:textSize="24sp"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choose_area_test_config_tv"
+        tools:gravity="bottom" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="1dp"
+        android:layout_height="400dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/count_codes_test_et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choose_area_test_config_tv" />
 
     <Switch
         android:id="@+id/fruits_sw"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
         android:gravity="center|start"
         android:minHeight="48dp"
         android:switchTextAppearance="@style/TextAppearance.AppCompat.Large"
         android:text="@string/fruits"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/candies_sw" />
+        app:layout_constraintTop_toBottomOf="@+id/choose_area_test_config_tv"
+        tools:gravity="center" />
 
     <Switch
         android:id="@+id/vegetables_sw"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:gravity="center|start"
         android:minHeight="48dp"
         android:switchTextAppearance="@style/TextAppearance.AppCompat.Large"
         android:text="@string/vegetables"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baked_sw" />
+        app:layout_constraintTop_toBottomOf="@+id/fruits_sw"
+        tools:gravity="center" />
 
     <Switch
         android:id="@+id/candies_sw"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:gravity="center|start"
         android:minHeight="48dp"
         android:switchTextAppearance="@style/TextAppearance.AppCompat.Large"
         android:text="@string/candies"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vegetables_sw" />
+        app:layout_constraintTop_toBottomOf="@+id/vegetables_sw"
+        tools:gravity="center" />
 
     <Switch
         android:id="@+id/rolls_sw"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
         android:gravity="center|start"
         android:text="@string/rolls"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/breads_sw" />
 
     <Switch
         android:id="@+id/donats_sw"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
         android:gravity="center|start"
         android:text="@string/donats"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rolls_sw" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/snacks_sweet_sw" />
 
     <Switch
         android:id="@+id/breads_sw"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
         android:gravity="center|start"
         android:text="@string/bread"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baguette_sw" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/baked_sw" />
 
     <Switch
         android:id="@+id/baguette_sw"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
         android:gravity="center|start"
         android:text="@string/baguette"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baked_sw" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rolls_sw" />
 
     <Switch
         android:id="@+id/snacks_sweet_sw"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
         android:gravity="center|start"
         android:text="@string/snacks_sweet"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baked_sw" />
+        app:layout_constraintTop_toBottomOf="@+id/snacks_salty_sw" />
 
     <Switch
         android:id="@+id/snacks_salty_sw"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
         android:gravity="center|start"
         android:text="@string/snacks_salty"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/snacks_sweet_sw" />
+        app:layout_constraintTop_toBottomOf="@+id/baguette_sw" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
