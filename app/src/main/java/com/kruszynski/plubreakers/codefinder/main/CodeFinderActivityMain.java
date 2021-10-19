@@ -33,7 +33,7 @@ public class CodeFinderActivityMain extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_code_finder_main);
         initComponents();
-//        initComponentsBehavior();
+        initComponentsBehavior();
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -45,7 +45,7 @@ public class CodeFinderActivityMain extends AppCompatActivity {
     private void initComponents() {
         bakedBt = findViewById(R.id.baked_finder_bt);
         fruitsBt = findViewById(R.id.fruit_finder_bt);
-        vegetablesBt = findViewById(R.id.vegetables_sw);
+        vegetablesBt = findViewById(R.id.vegetables_finder_bt);
         nutsBt = findViewById(R.id.nuts_finder_bt);
         candiesBt = findViewById(R.id.candies_finder_bt);
         othersBt = findViewById(R.id.other_finder_bt);
