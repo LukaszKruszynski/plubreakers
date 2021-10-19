@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".codefinder.activity.CodeFinderActivity">
+    tools:context=".codefinder.fruits.CodeFinderFruitsActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

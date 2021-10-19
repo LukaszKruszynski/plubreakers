@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kruszynski.plubreakers.codefinder.activity.CodeFinderActivity;
+import com.kruszynski.plubreakers.codefinder.main.CodeFinderActivityMain;
 import com.kruszynski.plubreakers.codetest.activity.TestConfigActivity;
 
 import java.lang.reflect.Field;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), TestConfigActivity.class));
         });
         codesBt.setOnClickListener(l -> {
-            startActivity(new Intent(getApplicationContext(), CodeFinderActivity.class));
+            startActivity(new Intent(getApplicationContext(), CodeFinderActivityMain.class));
         });
     }
     private void setBiggerSizeBlob() {

@@ -10,13 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PLUBreakers">
         <activity
-            android:name=".codefinder.activity.CodeFinderActivity"
-            android:screenOrientation="portrait"
-        android:exported="true" />
+            android:name=".codefinder.vegetables.CodeFinderVegetablesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.others.CodeFinderOthersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.nuts.CodeFinderNutsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.fruits.CodeFinderFruitsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.candies.CodeFinderCandiesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.baked.CodeFinderBakedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.main.CodeFinderActivityMain"
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".codetest.activity.TestConfigActivity"
-            android:screenOrientation="portrait"
-        android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
