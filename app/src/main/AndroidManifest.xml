@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PLUBreakers">
+        android:theme="@style/Theme.AppCompat.DayNight">
         <activity
             android:name=".codefinder.vegetables.CodeFinderVegetablesActivity"
             android:exported="false" />
