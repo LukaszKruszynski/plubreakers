@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E69341"
+    android:layout_marginTop="75dp"
+    android:layout_marginBottom="75dp"
     tools:context=".codefinder.main.CodeFinderActivityMain">
 
     <Button
@@ -13,6 +14,7 @@
         android:layout_height="100dp"
         android:layout_margin="16dp"
         android:text="@string/baked"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/fruit_finder_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -24,6 +26,7 @@
         android:layout_height="100dp"
         android:layout_margin="16dp"
         android:text="@string/fruits"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/vegetables_finder_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,6 +38,7 @@
         android:layout_height="100dp"
         android:layout_margin="16dp"
         android:text="@string/vegetables"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/nuts_finder_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -46,6 +50,7 @@
         android:layout_height="100dp"
         android:layout_margin="16dp"
         android:text="@string/candies"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/other_finder_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -57,6 +62,7 @@
         android:layout_height="100dp"
         android:layout_margin="16dp"
         android:text="@string/nuts"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/candies_finder_bt"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -66,6 +72,7 @@
         android:layout_height="100dp"
         android:layout_margin="16dp"
         android:text="@string/others"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
