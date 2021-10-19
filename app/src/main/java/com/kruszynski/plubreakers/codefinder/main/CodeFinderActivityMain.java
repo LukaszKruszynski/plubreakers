@@ -2,11 +2,13 @@ package com.kruszynski.plubreakers.codefinder.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kruszynski.plubreakers.MainActivity;
 import com.kruszynski.plubreakers.R;
 import com.kruszynski.plubreakers.codefinder.baked.CodeFinderBakedActivity;
 import com.kruszynski.plubreakers.codefinder.candies.CodeFinderCandiesActivity;
@@ -28,9 +30,16 @@ public class CodeFinderActivityMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_code_finder_main);
         initComponents();
-        initComponentsBehavior();
+//        initComponentsBehavior();
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mainIntent);
+        return true;
     }
 
     private void initComponents() {
@@ -43,8 +52,12 @@ public class CodeFinderActivityMain extends AppCompatActivity {
     }
 
     private void initComponentsBehavior() {
-
-
+        initBakedBtBehavior();
+        initFruitsBtBehavior();
+        initVegetablesBtBehavior();
+        initNutsBtBehavior();
+        initCandiesBtBehavior();
+        initOthersBtBehavior();
     }
 
     private void initBakedBtBehavior() {

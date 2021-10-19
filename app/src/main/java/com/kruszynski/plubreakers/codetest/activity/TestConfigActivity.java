@@ -3,6 +3,7 @@ package com.kruszynski.plubreakers.codetest.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kruszynski.plubreakers.MainActivity;
 import com.kruszynski.plubreakers.R;
 
 import java.util.ArrayList;
@@ -36,13 +38,17 @@ public class TestConfigActivity extends AppCompatActivity {
     private List<Switch> parentSwitches;
     private List<Switch> childrenSwitches;
 
-    public TestConfigActivity() {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mainIntent);
+        return true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_test_config);
         initViewComponents();
         initStartButtonLogic();

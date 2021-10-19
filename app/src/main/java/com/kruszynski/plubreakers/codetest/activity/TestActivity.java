@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kruszynski.plubreakers.MainActivity;
 import com.kruszynski.plubreakers.R;
 import com.kruszynski.plubreakers.codetest.adapter.TestReplyAdapter;
 import com.kruszynski.plubreakers.codetest.model.ProductTest;
@@ -70,8 +69,8 @@ public class TestActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(mainIntent);
+        Intent configTestIntent = new Intent(getApplicationContext(), TestConfigActivity.class);
+        startActivity(configTestIntent);
         return true;
     }
 
