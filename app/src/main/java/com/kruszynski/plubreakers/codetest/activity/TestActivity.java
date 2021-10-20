@@ -89,6 +89,7 @@ public class TestActivity extends AppCompatActivity {
         typeExtrasMap.put(getString(R.string.fruits_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.fruits_extra_sw_is_checked), false));
         typeExtrasMap.put(getString(R.string.vegetables_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.vegetables_extra_sw_is_checked), false));
         typeExtrasMap.put(getString(R.string.candies_extra_sw_is_checked), getIntent().getBooleanExtra(getString(R.string.candies_extra_sw_is_checked), false));
+        typeExtrasMap.put(getString(R.string.nuts_extra_is_checked),getIntent().getBooleanExtra(getString(R.string.nuts_extra_is_checked),false));
         return typeExtrasMap;
     }
 

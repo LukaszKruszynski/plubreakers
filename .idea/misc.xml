@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/PLUBreakers/app/src/main/res/drawable/ic_launcher_background.xml" value="0.225" />
         <entry key="..\:/Projects/PLUBreakers/app/src/main/res/layout/activity_code_chooser.xml" value="0.20953947368421053" />
         <entry key="..\:/Projects/PLUBreakers/app/src/main/res/layout/activity_code_finder.xml" value="0.16666666666666666" />
         <entry key="..\:/Projects/PLUBreakers/app/src/main/res/layout/activity_code_finder_baked.xml" value="0.11031420765027322" />

@@ -35,6 +35,7 @@ public class TestConfigActivity extends AppCompatActivity {
     private Switch snacksSaltySw;
     private Switch baguetteSw;
     private Switch donutsSw;
+    private Switch nutsSw;
     private List<Switch> parentSwitches;
     private List<Switch> childrenSwitches;
 
@@ -71,6 +72,7 @@ public class TestConfigActivity extends AppCompatActivity {
         baguetteSw = findViewById(R.id.baguette_sw);
         donutsSw = findViewById(R.id.donats_sw);
         vegetablesSw = findViewById(R.id.vegetables_sw);
+        nutsSw = findViewById(R.id.nuts_sw);
     }
 
     private void fillParentSwitchesList() {
@@ -79,6 +81,7 @@ public class TestConfigActivity extends AppCompatActivity {
         parentSwitches.add(fruitsSw);
         parentSwitches.add(vegetablesSw);
         parentSwitches.add(candiesSw);
+        parentSwitches.add(nutsSw);
     }
 
     private void fillChildrenSwitchesList() {
@@ -181,7 +184,7 @@ public class TestConfigActivity extends AppCompatActivity {
     private void initBehaviorSwitches() {
         initFamilySwitching(bakedSw, breadsSw, rollsSw, snacksSweetSw, snacksSaltySw, baguetteSw, donutsSw);
         initChildrenSwitchesBehavior(bakedSw, breadsSw, rollsSw, snacksSweetSw, snacksSaltySw, baguetteSw, donutsSw);
-        initParentSwitchesBehavior(fruitsSw, vegetablesSw, candiesSw);
+        initParentSwitchesBehavior(fruitsSw,vegetablesSw,candiesSw,nutsSw);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -209,6 +212,7 @@ public class TestConfigActivity extends AppCompatActivity {
                     intent.putExtra(getString(R.string.fruits_extra_sw_is_checked), fruitsSw.isChecked());
                     intent.putExtra(getString(R.string.vegetables_extra_sw_is_checked), vegetablesSw.isChecked());
                     intent.putExtra(getString(R.string.candies_extra_sw_is_checked), candiesSw.isChecked());
+                    intent.putExtra(getString(R.string.nuts_extra_is_checked),nutsSw.isChecked());
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.incorrect_count_codes_test_toast, Toast.LENGTH_SHORT).show();

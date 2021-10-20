@@ -103,7 +103,7 @@
         android:layout_width="170dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:gravity="center|start"
         android:minHeight="48dp"
         android:switchTextAppearance="@style/TextAppearance.AppCompat.Large"
@@ -118,7 +118,7 @@
         android:layout_width="170dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:gravity="center|start"
         android:minHeight="48dp"
         android:switchTextAppearance="@style/TextAppearance.AppCompat.Large"
@@ -126,6 +126,21 @@
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vegetables_sw"
+        tools:gravity="center" />
+
+    <Switch
+        android:id="@+id/nuts_sw"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center|start"
+        android:minHeight="48dp"
+        android:switchTextAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="@string/nuts"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/candies_sw"
         tools:gravity="center" />
 
     <Switch

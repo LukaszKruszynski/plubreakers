@@ -4,6 +4,7 @@
     <string name="bread_extra_is_checked">BAKING_BREAD</string>
     <string name="baguette_extra_is_checked">BAKING_BAGUETTE</string>
     <string name="donuts_extra_is_checked">BAKING_DONUT</string>
+    <string name="nuts_extra_is_checked">NUTS</string>
     <string name="rolls_extra_is_checked">BAKING_ROLL</string>
     <string name="snacks_sweet_extra_is_checked">BAKING_SWEET</string>
     <string name="snacks_salty_extra_is_checked">BAKING_SALTY</string>
@@ -16,6 +17,7 @@
     <string name="rolls">Bułki</string>
     <string name="nuts">Orzechy</string>
     <string name="others">Inne</string>
+    <string name="all">Wszystko</string>
     <string name="snacks_sweet">Przekąski słodkie</string>
     <string name="snacks_salty">Przekąski słone</string>
     <string name="donats">Pączki</string>
