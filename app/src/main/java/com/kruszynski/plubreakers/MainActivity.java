@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kruszynski.plubreakers.codefinder.main.CodeFinderActivityMain;
+import com.kruszynski.plubreakers.codefinder.CodeFinderActivityMain;
 import com.kruszynski.plubreakers.codetest.activity.TestConfigActivity;
 
 import java.lang.reflect.Field;

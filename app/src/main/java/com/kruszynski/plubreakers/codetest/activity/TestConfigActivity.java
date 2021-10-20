@@ -49,6 +49,8 @@ public class TestConfigActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.home);
+        getSupportActionBar().setTitle(getString(R.string.all));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_test_config);
         initViewComponents();

@@ -1,4 +1,4 @@
-package com.kruszynski.plubreakers.codefinder.main;
+package com.kruszynski.plubreakers.codefinder;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kruszynski.plubreakers.MainActivity;
 import com.kruszynski.plubreakers.R;
+import com.kruszynski.plubreakers.codefinder.all.CodeFinderAllActivity;
 import com.kruszynski.plubreakers.codefinder.baked.CodeFinderBakedActivity;
 import com.kruszynski.plubreakers.codefinder.candies.CodeFinderCandiesActivity;
 import com.kruszynski.plubreakers.codefinder.fruits.CodeFinderFruitsActivity;
@@ -19,17 +20,13 @@ import com.kruszynski.plubreakers.codefinder.vegetables.CodeFinderVegetablesActi
 
 public class CodeFinderActivityMain extends AppCompatActivity {
 
-    private Button bakedBt;
-    private Button fruitsBt;
-    private Button vegetablesBt;
-    private Button nutsBt;
-    private Button candiesBt;
-    private Button othersBt;
-
+    private Button bakedBt, fruitsBt, vegetablesBt, nutsBt, candiesBt, othersBt, allBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.home);
+        getSupportActionBar().setTitle(R.string.codes);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_code_finder_main);
         initComponents();
@@ -49,6 +46,7 @@ public class CodeFinderActivityMain extends AppCompatActivity {
         nutsBt = findViewById(R.id.nuts_finder_bt);
         candiesBt = findViewById(R.id.candies_finder_bt);
         othersBt = findViewById(R.id.other_finder_bt);
+        allBt = findViewById(R.id.all_finder_bt);
     }
 
     private void initComponentsBehavior() {
@@ -58,6 +56,7 @@ public class CodeFinderActivityMain extends AppCompatActivity {
         initNutsBtBehavior();
         initCandiesBtBehavior();
         initOthersBtBehavior();
+        initAllBtBehavior();
     }
 
     private void initBakedBtBehavior() {
@@ -110,6 +109,15 @@ public class CodeFinderActivityMain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), CodeFinderOthersActivity.class));
+            }
+        });
+    }
+
+    private void initAllBtBehavior() {
+        allBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), CodeFinderAllActivity.class));
             }
         });
     }

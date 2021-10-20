@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.kruszynski.plubreakers.MainActivity;
 import com.kruszynski.plubreakers.R;
 import com.kruszynski.plubreakers.codetest.adapter.TestReplyAdapter;
 import com.kruszynski.plubreakers.codetest.model.ProductTest;
@@ -60,6 +61,8 @@ public class TestActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.home);
+        getSupportActionBar().setTitle(getString(R.string.all));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
@@ -69,7 +72,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent configTestIntent = new Intent(getApplicationContext(), TestConfigActivity.class);
+        Intent configTestIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(configTestIntent);
         return true;
     }

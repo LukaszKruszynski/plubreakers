@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kruszynski.plubreakers">
+    package="com.kruszynski.plubreakers" >
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight">
+        android:theme="@style/Theme.AppCompat.DayNight" >
+        <activity
+            android:name=".codefinder.baked.donuts.CodeFinderDonutsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.baked.salty.CodeFinderSnacksSaltyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.baked.sweet.CodeFinderSnacksSweetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.baked.baguette.CodeFinderBaguetteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.baked.rolls.CodeFinderRollsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.baked.bread.CodeFinderBreadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".codefinder.baked.all.CodeFinderAllBakedActivity"
+            android:exported="false" />
         <activity
             android:name=".codefinder.all.CodeFinderAllActivity"
             android:exported="false" />
@@ -31,7 +52,7 @@
             android:name=".codefinder.baked.CodeFinderBakedActivity"
             android:exported="false" />
         <activity
-            android:name=".codefinder.main.CodeFinderActivityMain"
+            android:name=".codefinder.CodeFinderActivityMain"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
@@ -40,7 +61,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

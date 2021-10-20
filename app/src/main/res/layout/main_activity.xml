@@ -11,6 +11,7 @@
         android:layout_height="343dp"
         android:layout_margin="20sp"
         android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/codes_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,15 +19,26 @@
 
     <Button
         android:id="@+id/codes_bt"
-        android:layout_width="373dp"
-        android:layout_height="248dp"
+        android:layout_width="360dp"
+        android:layout_height="180dp"
         android:layout_margin="20sp"
-        android:text="KODY"
+        android:text="@string/codes"
         android:textSize="100sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/training_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/training_bt"
+        android:layout_width="360dp"
+        android:layout_height="180dp"
+        android:layout_margin="20sp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/training"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test_plu_bt"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:textSize="75sp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
