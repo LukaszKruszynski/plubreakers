@@ -18,6 +18,10 @@
     <string name="nuts">Orzechy</string>
     <string name="others">Inne</string>
     <string name="all">Wszystko</string>
+    <string name="test_config">Test - Konfiguracja</string>
+    <string name="test">Test</string>
+    <string name="code">Kod</string>
+    <string name="code_plu">PLU</string>
     <string name="all_baked">Wszystko - Pieczywo</string>
     <string name="codes">Kody</string>
     <string name="training">Trening</string>

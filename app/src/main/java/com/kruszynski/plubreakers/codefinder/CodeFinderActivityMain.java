@@ -33,6 +33,7 @@ public class CodeFinderActivityMain extends AppCompatActivity {
         initComponentsBehavior();
     }
 
+
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mainIntent);

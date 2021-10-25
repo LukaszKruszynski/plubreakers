@@ -62,7 +62,7 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.home);
-        getSupportActionBar().setTitle(getString(R.string.all));
+        getSupportActionBar().setTitle(getString(R.string.test));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
@@ -228,7 +228,7 @@ public class TestActivity extends AppCompatActivity {
     private void displayReplies(List<TestReply> replies) {
         List<TestReply> sortedReplies = sortRepliesByIncorrect(replies);
         TestReplyAdapter adapter = new TestReplyAdapter(sortedReplies);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view_result_test);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_code_finder);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL, false);
         DividerItemDecoration decorator = new DividerItemDecoration(recyclerView.getContext(), linearLayoutManager.getOrientation());
         recyclerView.addItemDecoration(decorator);
