@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 public class CodeFinderAllActivity extends AppCompatActivity {
     private CodeFinderAdapter adapter;
     private List<Product> products;
+    private Menu mOptionsMenu;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -45,6 +46,7 @@ public class CodeFinderAllActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_code_finder, menu);
+        mOptionsMenu = menu;
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) menuItem.getActionView();
@@ -58,7 +60,7 @@ public class CodeFinderAllActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-            adapter.getFilter().filter(newText);
+                adapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -67,11 +69,12 @@ public class CodeFinderAllActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == 16908332) {
+        if (item.getItemId() == android.R.id.home) {
             Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(mainIntent);
             return true;
-        } return true;
+        }
+        return true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -83,11 +86,16 @@ public class CodeFinderAllActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, 10, true));
         recyclerView.setLayoutManager(gridLayoutManager);
     }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void initComponents() {
         List<ProductTest> productTests = AppDatabase.instance(getApplicationContext()).productTestDao().getAll();
         products = productTests.stream().map(
-                l -> new Product(l.getName(), l.getCodePLU(), l.getProductType(), l.getImage())).collect(Collectors.toList());
+                l -> new Product(l.getId(), l.getName(), l.getCodePLU(), null, l.getProductType(), l.getImage())).collect(Collectors.toList());
         adapter = new CodeFinderAdapter(products);
+    }
+
+    private Menu getMenu() {
+        return mOptionsMenu;
     }
 }

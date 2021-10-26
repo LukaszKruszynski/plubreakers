@@ -17,6 +17,7 @@ import com.kruszynski.plubreakers.R;
 import com.kruszynski.plubreakers.codefinder.model.Product;
 import com.kruszynski.plubreakers.decoder.ImageDecoder;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class CodeFinderAdapter extends RecyclerView.Adapter<CodeFinderAdapter.Vi
     private List<Product> productsFull;
     private ImageView productImageIv;
     private TextView productNameTv, codePluTv, codeTv, codePluDescriptionTv, codeDescriptionTv;
+
 
     public CodeFinderAdapter(List<Product> products) {
         this.products = products;
@@ -76,13 +78,15 @@ public class CodeFinderAdapter extends RecyclerView.Adapter<CodeFinderAdapter.Vi
             if (constraint == null || constraint.length() < 0) {
                 filterProducts.addAll(productsFull);
             } else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                productsFull.stream().filter(p -> p.getName().toLowerCase().contains(filterPattern)).forEach(filterProducts::add);
-                productsFull.stream().filter(p -> p.getCodePlu().toLowerCase().startsWith(filterPattern)).forEach(filterProducts::add);
+                productsFull.stream().filter(p -> normalize(p.getName()).contains(normalize(constraint))).forEach(filterProducts::add);
+                productsFull.stream().filter(p -> p.getCodePlu().startsWith(constraint.toString())).forEach(filterProducts::add);
             }
             FilterResults results = new FilterResults();
             results.values = filterProducts;
             return results;
+        }
+        private String normalize(CharSequence text) {
+            return Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase().trim().replace("ł","l");
         }
 
         @Override
